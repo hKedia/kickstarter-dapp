@@ -74,7 +74,7 @@ class RequestNew extends Component {
             <Input
               value={this.state.recipient}
               onChange={event =>
-                this.setState({ recipient: event.target.recipient })
+                this.setState({ recipient: event.target.value })
               }
             />
           </Form.Field>

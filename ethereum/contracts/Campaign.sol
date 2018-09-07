@@ -40,13 +40,19 @@ contract Campaign {
     }
     
     function contribute() public payable {
+        // Ensure Minimum Contribution
         require(msg.value > minimumContribution);
-        
+
+        // Keep track of number of Contributors
+        if(!approvers[msg.sender]) {
+            approversCount++;
+        }
         approvers[msg.sender] = true;
-        approversCount++;
     }
     
     function createRequest(string description, uint value, address recipient) public restricted {
+        // Ensure we can't ask for more than the Campaign Balance
+        require(value <= address(this).balance);
         Request memory newRequest = Request({
            description: description,
            value: value,
