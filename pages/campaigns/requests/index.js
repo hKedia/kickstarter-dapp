@@ -40,12 +40,15 @@ class RequestIndex extends Component {
     const { Header, Row, HeaderCell, Body } = Table;
     return (
       <Layout>
-        <h3>Pending Requests</h3>
         <Link route={`/campaigns/${this.props.address}/requests/new`}>
           <a>
-            <Button primary>Create Request</Button>
+            <Button primary floated="right">
+              Create Request
+            </Button>
           </a>
         </Link>
+        <h3>List of Requests</h3>
+
         <Table>
           <Header>
             <Row>
@@ -60,6 +63,7 @@ class RequestIndex extends Component {
           </Header>
           <Body>{this.renderRows()}</Body>
         </Table>
+        <div>Found {this.props.requestsCount} requests.</div>
       </Layout>
     );
   }
